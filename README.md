@@ -15,17 +15,22 @@ It is available for
 - [Linux (universal) (download)](https://developer.cloud.unity3d.com/share/-ka0C5dNxf/)
 
 It is best played on Android with the accelerometer by tilting the smartphone.  
-One can get it for Android by scanning this QR code ![Grey Spring Anroid QR code](https://github.com/Corvax-Fisher/corvax-fisher.github.io/img/grey-spring-android-qr.png)  
-On other platforms it is played by using the **WASD keys**.
+On other platforms it is played by using the **WASD keys**.  
+One can get it for Android simply by scanning this QR code:
 
-![Grey Spring Image](https://github.com/Corvax-Fisher/corvax-fisher.github.io/img/grey-spring.png)
+![Grey Spring Anroid QR code](img/grey-spring-android-qr.png)
+
+And this is what it looks like:
+
+![Grey Spring Image](img/grey-spring.png)
 
 ## Mosaics
 
-This project was created by Farah Zeb Tahir, Sebastian Sopp and me during our master's degree studies of media informatics.
-It is a web based game where the goal is to solve a mosaics puzzle by using as few commands as possible.
-It was created with HTML, CSS, JavaScript, SVG, PHP, and XML.
+This project was created by Farah, Sebastian and me during our master's degree studies of media informatics.  
+- It is a web based game where the goal is to solve a mosaics puzzle by using as few commands as possible.  
+- It was created with HTML, CSS, JavaScript, SVG, PHP, and XML.  
+- It was tested for Firefox and Chrome.
 
-[Play now](http://mosaics-game.lima-city.de/)
+[Try it out](http://mosaics-game.lima-city.de/)
 
-![Mosaics Image](https://github.com/Corvax-Fisher/corvax-fisher.github.io/img/mosaics-game.png)
+![Mosaics Image](img/mosaics-game.png)
