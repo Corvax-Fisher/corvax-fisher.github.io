@@ -7,6 +7,11 @@ On this page, I will present some projects I was involved in.
 
 This project was created by Yannick and me in the course of a game jam at the Technische Hochschule Mittelhessen, a university of applied sciences, located in Friedberg (Hessen), Germany. It was hosted November 18-21, 2016.
 
+* The goal is to get the sphere out of the labyrinth or "spring a prisoner from jail"
+* It was made with Unity
+* It is best played on Android with the accelerometer by tilting the smartphone  
+* On other platforms it is played by using the **WASD keys**
+
 It is available for 
 
 * [WebGL (play now)](https://developer.cloud.unity3d.com/share/Z1SBocOEez/)  
@@ -15,8 +20,7 @@ It is available for
 * [Mac OS (universal) (download)](https://developer.cloud.unity3d.com/share/ZyOvp9O4lG/)  
 * [Linux (universal) (download)](https://developer.cloud.unity3d.com/share/-ka0C5dNxf/)  
 
-It is best played on Android with the accelerometer by tilting the smartphone.  
-On other platforms it is played by using the **WASD keys**.  
+One may have a look at the sources by clicking this [repository link](https://github.com/Corvax-Fisher/Grey-Spring).  
 One can get it for Android simply by scanning this QR code:
 
 ![Grey Spring Anroid QR code](img/grey-spring-android-qr.png)
@@ -27,13 +31,16 @@ And this is what it looks like:
 
 ## Mosaics
 
-This project was created by Farah, Sebastian and me during our master's degree studies of media informatics.  
+This project was created by Farah, Sebastian and me during our master's degree studies of media informatics in the course of a module called "Dokumentenstrukturen" (english: document structures).  
 
-+ It is a web based game  
 + The goal is to solve a mosaics puzzle by using as few commands as possible  
 + It was created with HTML, CSS, JavaScript, SVG, PHP, and XML  
 + It was tested for Firefox and Chrome
 
 [Try it out](http://mosaics-game.lima-city.de/)
+
+One may have a look at the sources by clicking this [repository link](https://github.com/Corvax-Fisher/Mosaics-Game).
+
+And this is what it looks like:
 
 ![Mosaics Image](img/mosaics-game.png)
