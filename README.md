@@ -37,7 +37,7 @@ Games@THM was a project of the Technische Hochschule Mittelhessen. During my tim
 * The goal of the tool was to ease the administration of the content for the game 3S.
 * It was developed iteratively by creating several prototypes, evaluating them, and including the feedback.
 * It was created with HTML, CSS, JS, React, Parse, Parse+React, Node.js, NPM, webpack, and various NPM packages for react, like react-router to add routing.
-* A paper was created (in german) for the work of the development project (first 6 months). (download)
+* A paper was created (in german) for the work of the development project (first 6 months). [(click to view)](doc/paper-final.pdf)
 
 For each group of data, a table page and a form page was created, to administrate the datasets.
 Because it was much about locations (point of interests), the table and form page of these will be shown.
@@ -46,7 +46,7 @@ Because it was much about locations (point of interests), the table and form pag
 
 ![Admin tool form page](img/POIs-Form-2.PNG)
 
-The game 3S was developed by Games@THM to ease the orientation and networking of new students. For more informations about the game, please refer to this page (only in german language): http://games.thm.de/3S/uber-3s/.
+The game 3S was developed by Games@THM to ease the orientation and networking of new students. For more informations about the game, please refer to this page (only in german language): http://games.thm.de/3S/uber-3s/
 
 ## Mosaics
 
