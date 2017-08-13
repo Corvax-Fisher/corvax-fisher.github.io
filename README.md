@@ -42,10 +42,9 @@ Games@THM was a project of the Technische Hochschule Mittelhessen. During my tim
 For each group of data, a table page and a form page was created, to administrate the datasets.
 Because it was much about locations (point of interests), the table and form page of these will be shown.
 
-<div style="float:left;">
-  <img src="img/POIs-Index.PNG" style="display: block; width: 50%"/>
-  <img src="img/POIs-Form-2.PNG" style="display: block; width: 50%"/>
-</div>
+![Admin tool table page](img/POIs-Index.PNG)
+
+![Admin tool form page](img/POIs-Form-2.PNG)
 
 The game 3S was developed by Games@THM to ease the orientation and networking of new students. For more informations about the game, please refer to this page (only in german language): <http://games.thm.de/3S/uber-3s/>
 
