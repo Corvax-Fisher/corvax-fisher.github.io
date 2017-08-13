@@ -3,7 +3,7 @@
 Hello, my name is Martin Heller and this is my portfolio page.
 On this page, I will present some projects I was involved in.
 
-## Grey Spring / Spring it out!
+## Grey Spring / Spring it out! (Unity)
 
 This project was created by Yannick and me in the course of a game jam at the Technische Hochschule Mittelhessen, a university of applied sciences, located in Friedberg (Hessen), Germany. It was hosted November 18-21, 2016.
 
@@ -29,7 +29,7 @@ And this is what it looks like:
 
 ![Grey Spring Image](img/grey-spring.png)
 
-## Admin tool for the location-based alternate reality online serious game 3S - Secret Science Society
+## Admin tool for the game 3S - Secret Science Society (Web)
 
 This project was created by me in the course of my development project (for studies) and I continued developing it during my spare-time work both at Games@THM from March 2015 to December 2016.
 Games@THM was a project of the Technische Hochschule Mittelhessen. During my time at this project, I worked on this tool, on the game 3S (web app), and on backend code for the game.
@@ -46,9 +46,9 @@ Because it was much about locations (point of interests), the table and form pag
 
 ![Admin tool form page](img/POIs-Form-2.PNG)
 
-The game 3S was developed by Games@THM to ease the orientation and networking of new students. For more informations about the game, please refer to this page (only in german language): <http://games.thm.de/3S/uber-3s/>
+The game 3S is a location-based alternate reality online serious game. It was developed by Games@THM to ease the orientation and networking of new students. For more informations about the game, please refer to this page (only in german language): <http://games.thm.de/3S/uber-3s/>
 
-## Mosaics
+## Mosaics (Web)
 
 This project was created by Farah, Sebastian and me during our master's degree studies of media informatics in the course of a module called "Dokumentenstrukturen" (english: document structures).  
 
@@ -63,3 +63,22 @@ One may have a look at the sources by clicking this [repository link](https://gi
 And this is what it looks like:
 
 ![Mosaics Image](img/mosaics-game.png)
+
+## Follow My Friend (Android)
+
+* A paper was created (in german) for this project [(Link to PDF)](doc/Paper-FMI.pdf)
+
+The App basically consists of two views/activities.
+
+<div>
+  <img src="img/FMF-List.png" style="float: left; width: 30%; margin: 0 10%;" />
+  <img src="img/FMF-Map.png" style="float: left; width: 30%; margin: 0 10%;" />
+</div>
+
+## Housekeeping book (iOS/Swift)
+
+* A web-based documentation was created (in german) for this project [(Link)](fma14ws-teamF)
+
+These are the views of the App:
+
+![Housekeeping book views](img/Haushaltsbuch-Views.PNG)
