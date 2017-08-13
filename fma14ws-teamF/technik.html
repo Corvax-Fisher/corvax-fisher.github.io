@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Emerald 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>FMA - Core Data - Haushaltsbuch</title>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="prism.css" rel="stylesheet" />
+	<script src="prism.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Haushaltsbuch - Core Data </a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html">Die App</a></li>
+				<li><a href="coredata.html">Core Data</a></li>
+				<li class="current_page_item"><a href="technik.html">Technik</a></li>
+				<li><a href="downloads.html">Downloads</a></li>
+			</ul>
+		</div>
+	</div>
+	<div><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="content">
+			<div class="post">
+				<h2 class="title">Die Technik - Core Data</a></h2>
+				<!--<p class="meta"><span class="date">WS 2014/15 </span><span class="posted">Von Farah Tahir & Martin Heller</span></p>
+				--><div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<h3>Einleitung</h3>
+					<p>Die Verwendung des Frameworks Core Data ist der Hauptbestandteil der App. 
+					Mit diesem werden die Buchungsdaten in eine SQLite Datenbank gespeichert.
+					Im Folgenden wird erläutert was bei der Umsetzung einer Core Data App beachtet werden muss und
+					welche Objekte und Methoden die Schnittstelle zu Datenbankfunktionen gewährleisten.</p>
+					<h3>Use Core Data</h3>
+					<p>Bereits beim Anlegen eines Projektes muss man darauf achten, dass man das <strong>Häkchen bei Use Core Data</strong> setzt.
+					Dadurch werden die für Core Data benötigten Dateien, Objekte und Methoden generiert.</p>
+					<h3>Das DB-Modell erstellen (Managed Object Model, kurz MOM)</h3>
+					<p>Für die Erstellung des MOM wird eine Datei &lt;Projektname&gt;.xcdatamodelid angelegt.
+					Öffnet man diese Datei, so öffnet sich in Xcode das entsprechende Design Tool.
+					Mit diesem kann man Entitäten, Attribute, Beziehungen, etc. anlegen.</p>
+					<img src="images/MOM-Erstellung.png" />
+					<p class="imagetext">Erstellung von Entitäten und Attributen</p>
+					<p>Ist man mit der Erstellung des Datenbankmodells fertig, generiert man die NSManagedObject-Subklassen.
+					Dazu geht man im Xcode-Menü auf Editor -> Generate NSManagedObject Subclass...</p>
+					<img src="images/Generierung der Subklassen.png" />
+					<p class="imagetext">Generierung der Subklassen</p>
+					<p>Drei wichtige Hinweise:<br>
+						<ul>
+							<li>Nach der Generierung der Subklassen muss man die einzelnen Entitäten anklicken und 
+							in der rechten Sidebar im rechten Reiter unter Class den Eintrag von &lt;Entitätsname&gt; in &lt;Projektname&gt;.&lt;Entitätsname&gt; abändern.</li>
+							<li>Nimmt man nach einem Build Änderungen am MOM vor, so muss im Xcode-Menü Product -> Clean ausgeführt werden.</li>
+							<li>Nimmt man nach einem Build Änderungen an einer NSManagedObject-Subklasse vor, so muss im iOS-Simulator-Menü iOS-Simulator -> Reset Contents and Settings ausgeführt werden.</li>
+						</ul>
+					</p>
+					<h3>Managed Object Context (MOC) holen</h3>
+					<p>Um im Code an die Schnittstelle zur Datenbank zu gelangen, holt man sich in den Controllern den MOC, welcher im App-Delegate generiert wurde.</p>
+					<pre><code class="language-swift">let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext</code></pre>
+					<p>Der MOC wird benötigt um Datenbankabfragen ausführen zu können, Objekte erstellen und löschen zu können, um Datenbankänderungen zu speichern oder zu verwerfen zu können, uvm.</p>
+					<h3>Objekte erstellen/löschen</h3>
+					<p>Die Erstellung eines Objekts kann z.B. so aussehen:</p>
+					<pre><code class="language-swift">let task = NSEntityDescription.insertNewObjectForEntityForName("Tasks", inManagedObjectContext: managedObjectContext!) as? Tasks</code></pre>
+					<p><strong>Hinweis:</strong> NSManagedObject-Subklassen dürfen nicht mit dem Default-Konstruktor erstellt werden, sondern sollten immer unter Verwendung von Core-Data-Klassen-Methoden instanziiert werden.</p>
+					<p>Zum Löschen von Objekten wird die Methode deleteObject des MOC verwendet:</p>
+					<pre><code class="language-swift">managedObjectContext?.deleteObject(managedObject)</code></pre>
+					<p>Die Objekte werden vorerst für die Löschung vorgemerkt.
+					Tatsächlich gelöscht werden sie erst, wenn der MOC gespeichert wird.</p>
+					<h3>Änderungen speichern/verwerfen</h3>
+					<p>Für das Speichern der Änderungen im MOC (ähnlich wie ein Commit einer DB-Transaktion) wird die save-Methode verwendet.</p>
+					<pre><code class="language-swift">managedObjectContext?.save(errorPointer)</code></pre>
+					<p>Möchte man hingegen die vorgenommenen Änderungen verwerfen, so ruft man die Methode rollback des MOC auf (analog zu einem Rollback einer DB-Transaktion).</p>
+					<pre><code class="language-swift">managedObjectContext!.rollback()</code></pre>
+					<h3>Datenbankabfragen durchführen</h3>
+					<p>Um Datenbankabfragen durchführen zu können braucht man einen FetchedResultController.
+					Dieser benötigt wiederum ein FetchRequest und den MOC.
+					Die Erstellung eines FetchRequests kann z.B. wie folgt aussehen:</p>
+					<pre><code class="language-swift">let fetchRequest = NSFetchRequest(entityName: "Tasks")
+let sortDescriptor = NSSortDescriptor(key: "desc", ascending: true) 
+fetchRequest.sortDescriptors = [sortDescriptor]
+// Prädikat zum filtern erstellen/hinzufügen
+let predicate1 = NSPredicate(format: "name contains %@", "b")
+fetchRequest.predicate = predicate1</code></pre>
+					<p>Das Hinzufügen von SortDescriptors und Predicates ist optional.
+					Einen Guide zur Erstellung von Prädikaten ist auf der <a style="color:blue" href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Predicates/Articles/pCreating.html">Apple-Developer-Seite</a> zu finden.</p>
+					<p>Der FetchedResultController wird dann wie folgt erstellt:</p>
+					<pre><code class="language-swift">fetchedResultController = NSFetchedResultsController(	fetchRequest: fetchRequest, 
+														managedObjectContext: managedObjectContext!, 
+														sectionNameKeyPath: nil, 
+														cacheName: nil)</code></pre>
+					<p>Eine Datenbankabfrage wird mit der performFetch-Methode des FetchedResultControllers ausgeführt:</p>
+					<pre><code class="language-swift">fetchedResultController.performFetch(nil)</code></pre>
+					<h3>Zugriff auf Daten aus der Datenbank</h3>
+					<p>Hat man den FetchedResultController zur Hand kann man mit der Methode objectAtIndexPath auf das entsprechende Datenbankobjekt zugreifen.
+					Es ist praktisch das Datenbankobjekt in die entsprechende NSManagedObject-Subklasse umzuwandeln, um direkt auf die Attribute zugreifen zu können, wie im folgenden Code-Snippet zu sehen ist.</p>
+					<pre><code class="language-swift">func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let entry = fetchedResultController.objectAtIndexPath(indexPath) as Entry
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as EntryCell
+        
+	cell.title.text = entry.title
+	// ... (Code-Snippet gekürzt)
+	return cell
+}</code></pre>
+					<p>Des Weiteren müssen dem TableView die Anzahl der Zeilen und Spalten bekannt gegeben werden:</p>
+<pre><code class="language-swift">// MARK: - Table View
+func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	// Return the number of sections.
+	return fetchedResultController.sections!.count
+}
+
+func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	// Return the number of rows in the section.
+	return fetchedResultController.sections![section].numberOfObjects
+}</code></pre>
+					<p>Hat man den FetchedResultController hingegen nicht zur Hand, wird man zumindest ein Objekt einer NSManagedObject-Subklasse haben.
+					Möchte man von diesem Objekt ein Attribut in einem TableView anzeigen lassen, so wird dieses vom Typ NSSet sein. Ein Zugriff sieht wie folgt aus:</p>
+					<pre><code class="language-swift">func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {	
+	// Zugriff auf einen Buchungsartikel über das Attribut allObjects,
+	// welches die Elemente des Sets als Array vom Typ AnyObject beinhaltet.
+	let selectedEntryItem = entry?.entry_items.allObjects[indexPath.indexAtPosition(1)] as Entry_Items
+	
+	let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as EntryCell
+	
+	cell.title.text = (selectedEntryItem.item as Item).name
+	cell.detail.text = "Stückpreis: \(selectedEntryItem.price) €, Anzahl: \(selectedEntryItem.quantity)"
+	var total = selectedEntryItem.price.floatValue*selectedEntryItem.quantity.floatValue
+	
+	cell.value.text = String(format: "%.2f €", total)
+	
+	return cell
+}</code></pre>
+					<p>Auch hier müssen dem TableView die Anzahl der Zeilen und Spalten bekannt gegeben werden:</p>
+<pre><code class="language-swift">// MARK: - Table View
+func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	// Return the number of sections.
+	return 1
+}
+
+func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	// Return the number of rows in the section.
+	var ret = entry?.entry_items.count
+	if ret != nil {return ret! }
+	else {return 0 }
+}</code></pre>
+				<h3>Aktualisieren der Views bei Datenbank-Änderungen</h3>
+				<p>Um die Views bei DB-Änderungen aktualisieren zu können gibt es zwei Wege:<br>
+				Wenn man einen FetchedResultController hat, kann der Controller als FetchedResultControllerDelegate fungieren
+				und die Methode controllerDidChangeContent implementieren:</p>
+<pre><code class="language-swift">class MainViewController: UIViewController, NSFetchedResultsControllerDelegate,...{
+	// ... 
+	override func viewDidLoad() {
+		// ...
+		fetchedResultController.delegate = self
+		// ...
+	}
+	// ... 
+	
+    //Daten aktualisieren bei Änderung des Managed Object Context
+    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+        tableView.reloadData()
+        calcAndShowSums()
+    }
+	// ...
+}</code></pre>
+				<p>Hat man keinen FetchedResultController muss man sich für die Nachricht <strong>NSManagedObjectContextObjectsDidChangeNotification</strong> über das <strong>NSNotificationCenter</strong> mit einer Handler-Methode registrieren.
+				In dieser Handler-Methode darf man dann die Änderungen aktualisieren (in den TableView-Methoden darf tableView.reloadData() nicht verwendet werden).
+<pre><code class="language-swift">override func viewDidLoad() {
+	// ... (Code-Snippet gekürzt)
+    NSNotificationCenter
+		.defaultCenter()
+		.addObserver(	self, 
+						selector: "handleChangeNotification:", 
+						name: NSManagedObjectContextObjectsDidChangeNotification, 
+						object: managedObjectContext )
+    }
+    
+    func handleChangeNotification(n: NSNotification) {
+        tableView.reloadData()
+    }</code></pre>				
+				</div>
+			</div>
+			<!--<div class="post">
+				<h2 class="title"><a href="#">Anzeige der Daten aus der Datenbank</a></h2>
+				<p class="meta"><span class="date">WS 2014/15 </span><span class="posted">Von Farah Tahir & Martin Heller</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<h3>
+					<img src="images/img05.jpg" alt="" />
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
+				</div>
+			</div>
+			<!--<div class="post">
+				<h2 class="title"><a href="#">Consecteteur hendrerit </a></h2>
+				<p class="meta"><span class="date">August 10, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
+				</div>
+			</div> -->
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+				<!-- <li>
+					<div id="search" >
+						<form method="get" action="#">
+							<div>
+								<input type="text" name="s" id="search-text" value="" />
+								<input type="submit" id="search-submit" value="GO" />
+							</div>
+						</form>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</li> -->
+				<!-- <li>
+					<h2>Aliquam tempus</h2>
+					<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
+				</li> -->
+				<li>
+					<h2>Referenzen</h2>
+					<ul>
+						<li><a href="http://jamesonquave.com/blog/core-data-in-swift-tutorial-part-1/">Core Data Tutorial in Swift<br>(Jameson Quave)</a></li>
+						<li><a href="http://rshankar.com/coredata-tutoiral-in-swift-using-nsfetchedresultcontroller/">Core Data Tutorial in Swift<br>(Ravi Shankar)</a></li>
+						<li><a href="https://developer.apple.com/library/ios/navigation/#section=Resource%20Types&topic=Reference">Class References (Apple-Developer)</a></li>
+						<li><a href="http://nshipster.com/nsdatecomponents/">NSDateComponents (NSHipster)</a></li>
+						<li><a href="http://nshipster.com/nspredicate/">NSPredicates (NSHipster)</a></li>
+						<li><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html">Prädikate erstellen (Apple-Dev.)</a></li>
+						<li><a href="http://www.theappguruz.com/sample-code/user-interaction-camera-using-uiimagepickercontroller-swift/">Image Picker (The App Guruz)</a></li>
+					</ul>
+				</li>
+				<!-- <li>
+					<h2>Blogroll</h2>
+					<ul>
+						<li><a href="#">Aliquam libero</a></li>
+						<li><a href="#">Consectetuer adipiscing elit</a></li>
+						<li><a href="#">Metus aliquam pellentesque</a></li>
+						<li><a href="#">Suspendisse iaculis mauris</a></li>
+						<li><a href="#">Urnanet non molestie semper</a></li>
+						<li><a href="#">Proin gravida orci porttitor</a></li>
+					</ul>
+				</li> -->
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page -->
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2014 Farah Tahir & Martin Heller. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Emerald 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>FMA - Core Data - Haushaltsbuch</title>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="index.html">Haushaltsbuch - Core Data </a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html">Die App</a></li>
+				<li class="current_page_item"><a href="coredata.html">Core Data</a></li>
+				<li><a href="technik.html">Technik</a></li>
+				<li><a href="downloads.html">Downloads</a></li>
+			</ul>
+		</div>
+	</div>
+	<div><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="content">
+			<div class="post">
+				<h2 class="title">Einblick in Core Data </h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<h3>Einführung</h3>
+					<p>Eines der mächtigsten und am häufigsten verwendeten Frameworks in der iOS-Entwicklung ist Core Data. Mit Core Data liefert Apple ein Framework, das auf objektorientierte Art und Weise die Daten mithilfe von SQLite persistent abspeichert und in der App verwaltet.</p>
+					<p>Eines der wichtigsten Grundsätze von Core Data sollte am Anfang klargestellt werden, wenn es um die Frage geht, was Core Data eigentlich genau ist: Core Data ist keine Datenbank im herkömmlichen Sinne. Das Framework liefert passende objektorientierte Klassen aus einem vorher erstellten Model, um über die Klassen zu arbeiten und entsprechende Inhalte in der Datenbank abzuspeichern und auszulesen. Daraus schlussfolgernd bekommt man als Entwickler nicht viel vom Datenbank-Backend mit, sondern beschäftigt sich lediglich mit den eigens erstellten Model-Klassen.</p>
+					<h3>Architektur</h3>
+					<p>Um Core Data zu nutzen, werden im Projekt einige Objekte benötigt, um die entsprechenden Funktionsweisen umsetzen zu können. Die Objekte mit Ihren zugehörigen Klassen werden im Folgenden vorgestellt.</p>
+					<img src="images/architektur_bestandteile.png" alt="" />
+					<p class="imagetext">Wichtigste Bestandteile der Architektur von Core Data</p>
+					<h4>NSManagedObject</h4>
+					<p>Die NSManagedObject-Klasse stellt eine Repräsentation einer Entity aus dem Model dar. Im Projekt wird mit dieser Subklasse von NSManagedObject gearbeitet. Für jede einzelne Entity, die im Model erstellt wurde, wird eine Subklasse angelegt. Die Subklassen müssen erzeugt werden, andernfalls kann man nicht das erstellte Model verwenden.</p>
+					<img src="images/nsmanagedobject.png" alt="" />
+					<p class="imagetext">Vom Entity zur NSManagedObject-Klasse</p>
+					<h4>NSManagedObjectContext</h4>
+					<p>Der Kontext ist für das Speichern oder Verwerfen der Änderungen an den NSManagedObjects zuständig. Wird beispielsweise ein Attribut des NSManagedObjects geändert, steht diese Änderung zu diesem Zeitpunkt nicht fest in der Datenbank. Erst wenn das NSManagedObjectContext-Objekt seine save-Methode aufruft, werden die Änderungen in der Datenbank gesichert und sind dementsprechend nach einem Neustart der App noch vorhanden. Genauso können die Änderungen der NSManagedObjects über das NSManagedObjectContext auch verworfen werden.</p>
+					<p>Das NSManagedObjectContext beinhaltet also die erzeugten NSManagedObject-Klassen. In den meisten Szenarien reicht ein NSManagedObjectContext aus. Core Data unterstützt aber auch die Nutzung von mehreren Kontexten, wenn dies für fortgeschrittene Anwendungen notwending ist. Es ist wichtig zu erwähnen, dass das NSManagedObjectContext seine NSManagedObjects kennt und jeder NSManagedObject kennt seinen NSManagedObjectContext.</p>
+					<h4>NSEntityDescription</h4>
+					<p>Die Klasse NSEntityDescription liefert Metadaten über eine Entity. Die Metadaten beinhalten den Entity-Namen, den Klassen-Namen (dieser muss nicht zwangsweise der gleiche Name sein), und ihre Attribute und Relationships. Die Attribute und Relationships sind wiederum Attribute- oder RelationshipDescriptionObjects. Die folgende Abbildung zeigt den Aufbau einer NSEntityDescription:</p>
+					<img src="images/nsentitydescription.png" alt="" />
+					<p class="imagetext">Aufbau einer NSEntityDescription-Klasse</p>
+					<h4>NSManagedObjectModel</h4>
+					<p>Das Model bildet die Struktur und den Aufbau der Datenbank. Das NSManagedObjectModel beinhaltet die NSEntityDescription-Klassen und weiß somit, welche Entities vorhanden sind und wie die Verbindungen (Relationships) zueinander aufgebaut sind. Das Model wird benötigt, um darüber die eigentliche Verbindung zur Datenbank herzustellen.</p>
+					<p>Das Model wird in der Regel über Dateien mit der Endung “xcdatamodelId” erstellt. Für diese Dateien bietet XCode eine grafische Oberfläche, die es dem Entwickler erlaubt, das Model mit Ihren Entities, Attributen und Relations zu bilden.</p>
+					<h4>NSPersistentStore</h4>
+					<p>Der Store ist eine abstrakte Basisklasse zur Abbildung des Datenbanktyps. Neben SQL unterstützt Core Data auch andere Formate, um die Daten persistent zu halten (z.B. XML).</p>
+					<h4>NSPersistentStoreCoordinator</h4>
+					<p>Der NSPersistentStoreCoordinator stellt die Verknüpfung zwischen einem NSPersistentStore und einem NSManagedObjectModel her. Dies ist notwendig, da eine Anwendung aus mehreren NSPersistentStores und NSManagedObjectModels bestehen kann. Durch die Verknüpfung kann der NSManagedObjectContext seine Änderungen in der Datenbank vornehmen oder überhaupt auf die Informationen zugreifen.</p>
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+				<li>
+					<h2>Referenzen</h2>
+					<ul>
+						<li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/Articles/cdTechnologyOverview.html#//apple_ref/doc/uid/TP40009296-SW1">Technology Overview - iOS Developer Library</a></li>
+						<li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/Articles/cdBasics.html#//apple_ref/doc/uid/TP40001650-TP1">Core Data Basics - iOS Developer Library</a></li>
+						<li><a href="https://opac.uni-giessen.de/DB=40/SET=1/TTL=1/CLK?IKT=8502&TRM=Apps+f%D3r+iOS+8+professionell+entwickeln">Apps für iOS 8 professionell entwickeln (Kapitel 9: Das Model und die Datenhaltung), Thomas Sillmann, München, Hanser-Verlag, 2014</a></li>
+						<li><a href="http://www.objc.io/issue-4/core-data-overview.html">Core Data Overview - objc</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page -->
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2014 Farah Tahir & Martin Heller. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

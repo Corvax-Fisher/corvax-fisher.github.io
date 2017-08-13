@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Emerald 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>FMA - Core Data - Haushaltsbuch</title>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="index.html">Haushaltsbuch - Core Data </a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="index.html">Die App</a></li>
+				<li><a href="coredata.html">Core Data</a></li>
+				<li><a href="technik.html">Technik</a></li>
+				<li><a href="downloads.html">Downloads</a></li>
+			</ul>
+		</div>
+	</div>
+	<div><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="content" style = "width:800px">
+			<p class="imagetext">WS 2014/15 - FMA - Von Farah Tahir & Martin Heller</p>
+			<div class="post">
+				<h2 class="title">Die App - Haushaltsbuch </h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>Im Rahmen der Veranstaltung „Fortgeschrittene Mobile Anwendungen“ wurde eine App entwickelt, mit der man seine Einnahmen und Ausgaben verwalten kann. Diese können nach einem bestimmten Monat gefiltert werden. Für jede Buchung gibt man einen Titel, eine Kategorie und einen Betrag an. Optional kann ein Bild, z.B. von der Rechnung, angehängt und/oder die einzelnen Artikel inkl. ihrer Subkategorie, Stückzahl und Einzelpreis hinzugefügt werden. Die App besteht aus vier Views, welche im Folgenden zu sehen sind:</p>
+					<p style="text-align:center"><img src="images/Haushaltsbuch Views.png" /></p>
+					<p class="imagetext">Die Views der App: Monatsauswahl, Monatsübersicht, Buchungseintrag, Artikeleintrag (v.l.n.r.)</p>
+					<div style="height: 300px; display: table; margin-bottom: 20px; margin-top: 20px">
+						<span style="vertical-align:middle; display: table-cell">
+							<p>Im Haupt-View werden die Buchungen eines ausgew&auml;hlten Monats angezeigt. 
+							In der unteren rechten Ecke werden die Summen der Einnahmen und Ausgaben und die gesamte Monatsdifferenz angezeigt.
+							Mit einem Klick auf &bdquo;<strong>Datum</strong>&ldquo; kann man nach einem anderen Monat filtern.
+							W&auml;hlt man eine Buchung aus, gelangt man in den Buchungs-View, in dem man diese editieren kann. 
+							Klickt man auf &bdquo;<strong>+</strong>&ldquo; oder &bdquo;<strong>-</strong>&ldquo;
+							kommt man ebenfalls in den Buchungs-View, um dort eine neue &bdquo;<strong>Einnahme</strong>&ldquo; 
+							oder &bdquo;<strong>Ausgabe</strong>&ldquo; anlegen zu können. 
+							Einzelne Buchungen können mit einem <strong>Swipe nach links</strong> gelöscht werden.</p>
+						</span>
+						<span style="float: right; margin-top: 0px; margin-left:20px; vertical-align:middle; display: table-cell">
+							<IMG id="MainView" SRC="images/MainView.png" style="margin-top: 0px; height: 300px">
+						</span>
+					</div>
+					<div style="height: 300px; display: table; margin-bottom: 20px">
+						<span style="float: left; margin-top: 0px; margin-right:20px; vertical-align:middle; display: table-cell">
+							<IMG id="BuchungsView" SRC="images/BuchungsView.png" style="margin-top: 0px; height: 300px">
+						</span>
+						<span style="vertical-align:middle; display: table-cell">
+							<p>Im Buchungs-View muss ein Titel, der Buchungsbetrag, das Buchungsdatum (Format: TT.MM.JJJJ) und eine Kategorie angegeben werden. Mit einem Klick auf &bdquo;<strong>Ausw&auml;hlen</strong>&ldquo; kann optional ein Bild der Rechnung beigefügt werden. Mit einem Klick auf &bdquo;<strong>Artikel hinzufügen</strong>&ldquo; gelangt man zu dem Artikel-View, in dem die einzelnen Artikel, z.B. von einem Supermarkt-Einkauf, hinzugefügt werden. Somit könnte man später feststellen, ob, wann und wie die Preise von bestimmen Artikeln sich geändert haben. Das Hinzufügen von Artikeln ist ebenfalls optional. Ein Klick auf &bdquo;<strong>Speichern</strong>&ldquo; persistiert die erstellte Buchung in der Datenbank, ein Klick auf &bdquo;<strong>Abbrechen</strong>&ldquo; verwirft die eingegebenen Daten inkl. angelegten Artikeleinträgen.</p>
+						</span>
+						
+					</div>
+					<div style="height: 300px; display: table; margin-bottom: 20px">
+						<span style="vertical-align:middle; display: table-cell">
+							<p>Im Artikel-View können die einzelnen Artikel einer Buchung hinzugefügt werden. Dazu wird Artikelname, Stückpreis, Stückzahl und eine entsprechende Subkategorie gewählt. Es werden nur die Subkategorien der (im Buchungs-View) ausgew&auml;ten Kategorie angezeigt. Mit einem Klick auf &bdquo;<strong>Hinzufügen</strong>&ldquo; wird der eingetragene Artikel der darunterliegenden Tabelle hinzugefügt. Die Artikeleinträge in der Tabelle können mit einem <strong>Swipe nach links</strong> wieder gelöscht werden. Mit einem Klick auf &bdquo;<strong>Fertig</strong>&ldquo; werden die eingetragenen Artikel zur Speicherung vorgemerkt, ein Klick auf &bdquo;<strong>Abbrechen</strong>&ldquo; verwirft die angelegten Artikeleinträge.</p>
+						</span>
+						<span style="float: right; margin-top: 0px; margin-left:20px; vertical-align:middle; display: table-cell">
+							<IMG id="ArtikelView" SRC="images/ArtikelView.png" style="margin-top: 0px; height: 300px">
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="post">
+				<h2 class="title"><a href="#">Lorem ipsum sed aliquam</a></h2>
+				<p class="meta"><span class="date">August 20, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<img src="images/img05.jpg" alt="" />
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
+				</div>
+			</div>
+			<div class="post">
+				<h2 class="title"><a href="#">Consecteteur hendrerit </a></h2>
+				<p class="meta"><span class="date">August 10, 2012</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
+					<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
+				</div>
+			</div> -->
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<!--div id="sidebar">
+			<ul>
+				<!-- <li>
+					<div id="search" >
+						<form method="get" action="#">
+							<div>
+								<input type="text" name="s" id="search-text" value="" />
+								<input type="submit" id="search-submit" value="GO" />
+							</div>
+						</form>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</li> -->
+				<!-- <li>
+					<h2>Aliquam tempus</h2>
+					<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
+				</li> -->
+				<!--li>
+					<h2>Referenzen</h2>
+					<ul>
+						<li><a href="http://jamesonquave.com/blog/core-data-in-swift-tutorial-part-1/">Core Data Tutorial in Swift<br>(Jameson Quave)</a></li>
+						<li><a href="http://rshankar.com/coredata-tutoiral-in-swift-using-nsfetchedresultcontroller/">Core Data Tutorial in Swift<br>(Ravi Shankar)</a></li>
+					</ul>
+				</li>
+				<!-- <li>
+					<h2>Blogroll</h2>
+					<ul>
+						<li><a href="#">Aliquam libero</a></li>
+						<li><a href="#">Consectetuer adipiscing elit</a></li>
+						<li><a href="#">Metus aliquam pellentesque</a></li>
+						<li><a href="#">Suspendisse iaculis mauris</a></li>
+						<li><a href="#">Urnanet non molestie semper</a></li>
+						<li><a href="#">Proin gravida orci porttitor</a></li>
+					</ul>
+				</li> -->
+			<!--/ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page -->
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2014 Farah Tahir & Martin Heller. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
