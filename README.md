@@ -34,7 +34,7 @@ And this is what it looks like:
 This project was created by me in the course of my development project (for studies) and I continued developing it during my spare-time work both at Games@THM from March 2015 to December 2016.
 Games@THM was a project of the Technische Hochschule Mittelhessen. During my time at this project, I worked on this tool, on the game 3S (web app), and on backend code for the game.
 
-* The goal of the tool was to ease the administration of the content for the game 3S.
+* The goal of the tool is to ease the administration of the content for the game 3S.
 * It was developed iteratively by creating several prototypes, evaluating them, and including the feedback.
 * It was created with HTML, CSS, JS, React, Parse, Parse+React, Node.js, NPM, webpack, and various NPM packages for react, like react-router to add routing.
 * A paper was created (in german) for the work of the development project (first 6 months). [(Link to PDF)](doc/paper-final.pdf)
@@ -66,18 +66,30 @@ And this is what it looks like:
 
 ## Follow My Friend (Android)
 
+This project was created by Farah and me during our master's degree studies of media informatics in the course of a module called "Fortgeschrittene Mensch-Maschine-Interaktion" (english: Advanced Human Computer Interaction).
+
+* The goal of this App is to help you and your friend finding each other.
+* It was created with Android Studio in Java using Activities, a Service, Broadcast Receivers, Notifications, a Google Maps Fragment, a Google Directions API Parser, Dialog Fragments, a Database, and the aSmack library (XMPP) for the communication.
 * A paper was created (in german) for this project [(Link to PDF)](doc/Paper-FMI.pdf)
 
-The App basically consists of two views/activities.
+One may have a look at the sources by clicking this [repository link](https://github.com/Corvax-Fisher/FindMyFriend). 
+
+The App basically consists of two views/activities: A contact list and a map.
 
 <div>
   <img src="img/FMF-List.png" style="float: left; width: 30%; margin: 0 10%;" />
   <img src="img/FMF-Map.png" style="float: left; width: 30%; margin: 0 10%;" />
 </div>
 
+
 ## Housekeeping book (iOS/Swift)
 
+This project was created by Farah and me during our master's degree studies of media informatics in the course of a module called "Fortgeschrittene Mobile Anwendungen" (english: Advanced Mobile Applications).
+
+* The goal of this App is to ease the creation and administration of a housekeeping book.
+* It was created with Xcode for iOS in Swift using the Core Data Framework.
 * A web-based documentation was created (in german) for this project [(Link)](fma14ws-teamF)
+* On the download page of the documentation, the final [presentation](fma14ws-teamF/downloads/Haushaltsbuch_Abschlusspraesentation.pdf), a [poster](fma14ws-teamF/downloads/Haushaltsbuch_PosterA0.pdf), a [manual](fma14ws-teamF/downloads/Haushaltsbuch_Verwendung_Der_App.pdf) and the [sources](fma14ws-teamF/downloads/Haushaltsbuch.zip) can be found.
 
 These are the views of the App:
 
